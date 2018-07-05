@@ -125,7 +125,10 @@ schemaComposer.Mutation.addFields({
 
       // somehow work with files
       if (poster) {
+        console.log('Argument `poster` is a Promise:')
         console.log(poster);
+
+        console.log("\nIt's value is and object with FileStream:");
         console.log(await poster);
       }
 
