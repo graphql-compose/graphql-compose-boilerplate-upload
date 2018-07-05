@@ -111,6 +111,30 @@ schemaComposer.Mutation.addFields({
       return post;
     },
   },
+  createPost: {
+    type: 'Post',
+    args: {
+      id: 'Int!',
+      title: 'String',
+      authorId: 'Int',
+      images: '[Upload]',
+      poster: 'Upload',
+    },
+    resolve: async (_, { id, title, authorId, images, poster }) => {
+      const newPost = { id, title, authorId };
+
+      // somehow work with files
+      if (poster) {
+        console.log(poster);
+        console.log(await poster);
+      }
+
+      // somehow save a new record
+      posts.push(newPost);
+
+      return newPost;
+    },
+  },
 });
 
 // And now buildSchema which will be passed to express-graphql or apollo-server
